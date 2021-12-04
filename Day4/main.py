@@ -4,9 +4,7 @@
 import sys
 import os
 import numpy as np
-
-# sys.path.append("/Users/rblount/Scripts/AdventOfCode/tools")
-
+from timeit import repeat, timeit
 from AOC import AOC
 
 testing = False
