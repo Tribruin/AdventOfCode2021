@@ -5,6 +5,7 @@ import sys
 import os
 from AOC import AOC
 import numpy as np
+from TerminalColors import *
 
 testing = False
 
