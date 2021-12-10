@@ -1,16 +1,16 @@
 
-6 = a b   d e f g
-5 = a b   d   f g
 
-8 = a b c d e f g                       a b c d e f g
-4 =   b c d   f                         * 
 7 = a   c     f
 1 =     c     f
+4 =   b c d   f                         * 
+8 = a b c d e f g                       a b c d e f g
+
 0 = a b c   e f g 
 3 = a   c d   f g
 2 = a   c d e   g
 9 = a b c d   f g 
-
+6 = a b   d e f g
+5 = a b   d   f g
 
 
 a = 7 not in 1                  
