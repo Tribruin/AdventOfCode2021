@@ -15,19 +15,12 @@ testing = False
 
 def compute_gamma(lines):
 
-    y, x = len(lines), len(lines[0])
-    array = np.zeros((y, x), dtype=int)
-    for i, line in enumerate(lines):
-        for k, bit in enumerate(line):
-            array[i][k] = int(bit)
+    lines = [list(x) for x in lines]
+    array = np.asanyarray(lines, dtype=int)
 
-    ones = np.count_nonzero(
-        array,
-        axis=0,
-    )
+    ones = np.count_nonzero(array, axis=0)
 
-    gamma = "".join(["1" if digit >= (y - digit) else "0" for digit in ones])
-
+    gamma = "".join(["1" if digit >= (len(lines) - digit) else "0" for digit in ones])
     epsilon = "".join(["0" if digit == "1" else "1" for digit in gamma])
 
     return gamma, epsilon
@@ -68,6 +61,7 @@ def part2():
             if char != co2rating_copy[k][i]:
                 co2rating_copy.pop(k)
         co2rating = co2rating_copy
+        # co2rating = [x for x in co2rating if x[i] != char]
         if len(co2rating) == 1:
             # print(co2rating[0])
             break

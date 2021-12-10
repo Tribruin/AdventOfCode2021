@@ -42,7 +42,7 @@ def part2(data, corrupt_lines):
 
     missing_markers_values = list()
 
-    for x, line in enumerate(data):
+    for line in data:
         missing_markers = list()
         current_open_markers = list()
         for i in line:
@@ -75,11 +75,10 @@ def main():
     codeYear = int(codePath.split("/")[-2])
     print(f"Running Advent of Code for Year: {codeYear} - Day {codeDate}")
 
-    global data
-    data = AOC(codeDate, codeYear, test=testing)
-    input = data.read_lines()
+    code_data = AOC(codeDate, codeYear, test=testing)
+    input_data = code_data.read_lines()
     lines = list()
-    for line in input:
+    for line in input_data:
         lines.append([x for x in line])
 
     corrupt_lines = part1(lines)
