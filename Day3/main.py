@@ -15,8 +15,9 @@ testing = False
 
 def compute_gamma(lines):
 
-    lines = [list(x) for x in lines]
-    array = np.asanyarray(lines, dtype=int)
+    # lines = [list(x) for x in lines]
+    # array = np.asanyarray(lines, dtype=int)
+    array = np.genfromtxt(lines, dtype=int, delimiter=1)
 
     ones = np.count_nonzero(array, axis=0)
 

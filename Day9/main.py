@@ -51,6 +51,7 @@ def part1(floor_array: np.array):
 
 def part2(floor_array: np.array):
 
+    # THIS IS NOT MY CODE. I cheated!
     # Used code from https://gitlab.com/AsbjornOlling/aoc2021/-/blob/master/09/solve.py
     # Did not know about label or bincount
 
