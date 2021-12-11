@@ -92,7 +92,7 @@ def part2(sig_patterns):
         result = ""
         for digit in line[1].strip().split(" "):
             result += str(found_subs[sorted_string(digit)])
-        print(result)
+        # print(result)
         total_result += int(result)
     print(total_result)
 
@@ -108,7 +108,7 @@ def main():
     data = AOC(codeDate, codeYear, test=testing)
     sig_patterns = parse_input(data)
 
-    # part1(sig_patterns)
+    part1(sig_patterns)
     part2(sig_patterns)
 
 

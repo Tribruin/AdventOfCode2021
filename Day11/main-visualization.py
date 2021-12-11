@@ -4,11 +4,14 @@
 import sys
 import os
 import numpy as np
-from TerminalColors import BRED, BGREEN, ENDCOLOR
+from time import sleep
+from TerminalColors import *
 from AOC import AOC
+
 
 testing = False
 days = 100
+COLOR_CYCLE = [BRED, BGREEN, BYELLOW, BBLUE, BPURPLE, BCYAN, BWHITE, RED, GREEN, YELLOW]
 
 
 def parse_input(data_input: list):
@@ -17,14 +20,18 @@ def parse_input(data_input: list):
     return array
 
 
-def print_octupuses(array: np.array):
+def print_octupuses(array: np.array, cycle: int, count: int):
     _, x_size = array.shape
+    print(f"{RESETSCREEN}")
+    print(f"Cycle #: {cycle} : Total Count: {count}")
     for (_, x), val in np.ndenumerate(array):
-        if val >= 10:
-            print(f"{BRED}", end="")
-        elif val == 0:
-            print(f"{BGREEN}", end="")
-        print(f"{val:>4}{ENDCOLOR}", end="")
+        # if val >= 10:
+        #     print(f"{BRED}", end="")
+        # elif val == 0:
+        #     print(f"{BGREEN}", end="")
+        # else:
+        #     print
+        print(f"{COLOR_CYCLE[val]}{val:>4}{ENDCOLOR}", end="")
         if x == x_size - 1:
             print()
     print()
@@ -34,7 +41,8 @@ def process_cycle(array: np.array):
     y_size, x_size = array.shape
     count = 0
     array += 1
-    array_map = [(y, x) for y, x in np.argwhere(array > 9)]
+    result = np.where(array > 9)
+    array_map = list(zip(result[0], result[1]))
     checked_locations = list()
     while len(array_map) > 0:
         for point in array_map:
@@ -58,6 +66,8 @@ def part1(array: np.array):
     for cycle in range(1, days + 1):
         array, flash_count = process_cycle(array)
         count += flash_count
+        print_octupuses(array, cycle, count)
+        sleep(0.5)
     print(f"After {cycle} Days: Total Flashes: {count}")
 
 
@@ -68,6 +78,8 @@ def part2(array: np.array):
     while count < all_syncd:
         array, count = process_cycle(array)
         cycle += 1
+        print_octupuses(array, cycle, count)
+        sleep(0.5)
     print(f"After {cycle} Days: Total Flashes: {count}")
 
 
@@ -84,6 +96,7 @@ def main():
     data_input = parse_input(data_input)
 
     part1(data_input)
+    input("Press <return> to go to Part 2")
     part2(data_input)
 
 
