@@ -1,11 +1,8 @@
 #!/Users/rblount/.pyenv/versions/AdOfCode/bin/python
 
 
-from operator import sub
-from posixpath import split
 import sys
 import os
-from types import resolve_bases
 from AOC import AOC
 
 testing = False
@@ -51,12 +48,12 @@ def part2(sig_patterns):
         a = sorted_string(set(subs[7]).difference(set(subs[1])))
         cf = subs[1]
         eg = sorted_string(set(subs[8]).difference(set(subs[7]).union(subs[4])))
-
         cefg = sorted_string(cf + eg)
+
         for val in split_line:
             if set(cefg).issubset(val):
                 subs[0] = val
-
+                break
         split_line.pop(split_line.index(subs[0]))
 
         # Now let's find the 2, 3
@@ -75,9 +72,10 @@ def part2(sig_patterns):
         for digit in split_line:
             if set(cf).issubset(set(digit)):
                 subs[9] = digit
+                break
         split_line.pop(split_line.index(subs[9]))
 
-        # Finally we find the 6, 5
+        Finally we find the 6, 5
         if len(split_line[0]) == 6:
             subs[6] = split_line[0]
             subs[5] = split_line[1]
@@ -104,7 +102,6 @@ def main():
     codeYear = int(codePath.split("/")[-2])
     print(f"Running Advent of Code for Year: {codeYear} - Day {codeDate}")
 
-    global data
     data = AOC(codeDate, codeYear, test=testing)
     sig_patterns = parse_input(data)
 

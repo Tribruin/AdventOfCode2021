@@ -11,7 +11,7 @@ from AOC import AOC
 
 testing = False
 days = 100
-COLOR_CYCLE = [BRED, BGREEN, BYELLOW, BBLUE, BPURPLE, BCYAN, BWHITE, RED, GREEN, YELLOW]
+COLOR_CYCLE = [BWHITE, BGREEN, BYELLOW, BBLUE, BPURPLE, BCYAN, BRED, GREEN, RED, YELLOW]
 
 
 def parse_input(data_input: list):
@@ -67,7 +67,7 @@ def part1(array: np.array):
         array, flash_count = process_cycle(array)
         count += flash_count
         print_octupuses(array, cycle, count)
-        sleep(0.5)
+        sleep(0.1)
     print(f"After {cycle} Days: Total Flashes: {count}")
 
 
@@ -79,7 +79,7 @@ def part2(array: np.array):
         array, count = process_cycle(array)
         cycle += 1
         print_octupuses(array, cycle, count)
-        sleep(0.5)
+        sleep(0.1)
     print(f"After {cycle} Days: Total Flashes: {count}")
 
 
